@@ -1,0 +1,30 @@
+{
+  "name": "pcip",
+  "version": "1.0.0",
+  "description": "Permit Current IP",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wimdecroix/pcip.git"
+  },
+  "author": "Wim Decroix",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wimdecroix/pcip/issues"
+  },
+  "homepage": "https://github.com/wimdecroix/pcip#readme",
+  "dependencies": {
+    "ajv": "6.5.2",
+    "aws-sdk": "2.291.0",
+    "is-ip": "2.0.0",
+    "js-yaml": "3.12.0",
+    "jsonwebtoken": "8.3.0",
+    "moment": "2.22.2",
+    "proxy-addr": "2.0.4",
+    "uuid": "3.3.2",
+    "webtask-tools": "3.3.0"
+  }
+}

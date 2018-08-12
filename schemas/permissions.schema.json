@@ -1,0 +1,100 @@
+{
+  "$id": "https://pcip-schemas.decroix.me/pcip/schemas/permissions.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "Permissions",
+  "type": "object",
+  "properties": {
+    "users": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/user"
+      }
+    },
+    "permissions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/permission"
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "permissions"
+  ],
+  "definitions": {
+    "user": {
+      "type": "string",
+      "description": "username"
+    },
+    "permission": {
+      "type": "object",
+      "required": [
+        "provider",
+        "securitygroup",
+        "region",
+        "port",
+        "protocol",
+        "ttl"
+      ],
+      "properties": {
+        "provider": {
+          "type": "string",
+          "description": "Only aws-sg supported for the moment.  To apply ingress permissions on an AWS security group.",
+          "enum": [
+            "aws-sg"
+          ]
+        },
+        "securitygroup": {
+          "type": "string",
+          "description": "For aws-sg provider, this option specifies which security group needs to be changed.",
+          "pattern": "sg-[a-z0-9]+"
+        },
+        "region": {
+          "type": "string",
+          "description": "For aws-sg provider, this option specifies which AWS region to use.",
+          "enum": [
+            "us-east-1",
+            "us-east-2",
+            "us-west-1",
+            "us-west-2",
+            "us-gov-west-1",
+            "ca-central-1",
+            "eu-west-1",
+            "eu-west-2",
+            "eu-west-3",
+            "eu-central-1",
+            "ap-northeast-1",
+            "ap-northeast-2",
+            "ap-northeast-3",
+            "ap-southeast-1",
+            "ap-southeast-2",
+            "ap-south-1",
+            "sa-east-1",
+            "cn-north-1",
+            "cn-northwest-1"
+          ]
+        },
+        "port": {
+          "type": "integer",
+          "description": "TCP/UDP port that needs to be opened.",
+          "minimum": 1,
+          "maximum": 65535
+        },
+        "protocol": {
+          "type": "string",
+          "description": "TCP, UDP or both. Valid options: tcp, udp, all",
+          "enum": [
+            "tcp",
+            "udp",
+            "all"
+          ]
+        },
+        "ttl": {
+          "type": "string",
+          "description": "The duration for which this IP/port/protocol should stay open. (ISO8601 Duration or momentjs duration)",
+          "pattern": "(^P(?!$)(\\d+Y)?(\\d+M)?(\\d+W)?(\\d+D)?(T(?=\\d+[HMS])(\\d+H)?(\\d+M)?(\\d+S)?)?$)|(^\\d+(years|y|months|M|weeks|w|days|d|hours|h|minutes|m|seconds|s|milliseconds|ms)$)"
+        }
+      }
+    }
+  }
+}

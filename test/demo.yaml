@@ -1,0 +1,17 @@
+users:
+- '*@auth0.com'
+- 'wim.decroix@gmail.com'
+- 'github|41646626'
+permissions:
+- provider: aws-sg
+  securitygroup: sg-07ded32c3a23e3095
+  region: us-east-1
+  port: 80
+  protocol: tcp
+  ttl: "1days"
+- provider: aws-sg
+  securitygroup: sg-0d4ca9fd8dbbb6656
+  region: eu-west-1
+  port: 22
+  protocol: tcp
+  ttl: "P1D"
