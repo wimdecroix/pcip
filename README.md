@@ -129,6 +129,9 @@ curl -v -H "Authorization: Bearer ${ACCESS_TOKEN}" -X PUT `wt inspect demo --out
 ## Demo
 https://www.decroix.me/pcip/demo
 
+## TODO
+* automated tests
+
 ## Roadmap
 * support ipv6
 * support port ranges
